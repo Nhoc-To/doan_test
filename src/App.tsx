@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from './components/layout/MainLayout';
 import Home from './pages/Home';
 
@@ -16,7 +16,7 @@ import Settings from './pages/Settings';
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
@@ -32,7 +32,7 @@ const App: React.FC = () => {
         <Route path="/report" element={<Report />} />
         <Route path="/upload" element={<UploadVideo />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
