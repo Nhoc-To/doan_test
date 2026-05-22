@@ -1,0 +1,81 @@
+/* Base button class for resetting and general transitions */
+.apple-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: transform 0.1s ease, outline 0.2s ease, background-color 0.2s ease;
+  text-align: center;
+  text-decoration: none;
+}
+
+.apple-btn:active {
+  transform: scale(0.95);
+}
+
+.apple-btn:focus-visible {
+  outline: 2px solid var(--primary-focus);
+  outline-offset: 2px;
+}
+
+/* Primary Pill */
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--canvas);
+  font-size: 17px;
+  font-weight: 400;
+  border-radius: var(--radius-pill);
+  padding: 11px 22px;
+}
+
+.btn-primary:disabled {
+  background-color: var(--divider-soft);
+  color: var(--ink-muted-48);
+  cursor: not-allowed;
+}
+
+/* Secondary Pill (Ghost) */
+.btn-secondary-pill {
+  background-color: transparent;
+  color: var(--primary);
+  font-size: 17px;
+  font-weight: 400;
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-pill);
+  padding: 10px 21px; /* minus 1px for border */
+}
+
+/* Dark Utility */
+.btn-dark-utility {
+  background-color: var(--ink);
+  color: var(--body-on-dark);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.224px;
+  border-radius: var(--radius-sm);
+  padding: 8px 15px;
+}
+
+/* Pearl Capsule */
+.btn-pearl-capsule {
+  background-color: var(--surface-pearl);
+  color: var(--ink-muted-80);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.224px;
+  border: 3px solid var(--divider-soft);
+  border-radius: var(--radius-md);
+  padding: 5px 11px; /* adjusted for 3px border */
+}
+
+/* Icon Circular */
+.btn-icon-circular {
+  background-color: var(--surface-chip-translucent);
+  color: var(--ink);
+  border-radius: var(--radius-full);
+  width: 44px;
+  height: 44px;
+  padding: 0;
+}
