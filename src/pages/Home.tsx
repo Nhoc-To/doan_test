@@ -47,7 +47,7 @@ const Home: React.FC = () => {
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={scoreData} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
                   <Line type="monotone" dataKey="score" stroke="#10B981" strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 6 }} />
-                  <CartesianGrid stroke="#e2e8f0" strokeDasharray="5 5" vertical={false} />
+                  <CartesianGrid stroke="var(--border-color)" strokeDasharray="5 5" vertical={false} />
                   <XAxis dataKey="name" stroke="#64748B" />
                   <YAxis stroke="#64748B" domain={[50, 100]} />
                   <Tooltip 
@@ -71,7 +71,7 @@ const Home: React.FC = () => {
                   <span className="badge" style={{ backgroundColor: '#ecfdf5', color: '#10b981' }}>92 Điểm</span>
                 </div>
                 
-                <div className="peer-reviews" style={{ backgroundColor: '#f8fafc', padding: '0.75rem', borderRadius: '0.375rem', border: '1px solid #e2e8f0' }}>
+                <div className="peer-reviews" style={{ backgroundColor: 'var(--bg-color)', padding: '0.75rem', borderRadius: '0.375rem', border: '1px solid var(--border-color)' }}>
                   <h4 className="text-xs font-bold text-slate-500 mb-2 flex items-center gap-1" style={{ color: '#64748b' }}><MessageCircle size={14}/> Đánh giá từ người xem (2)</h4>
                   <div className="flex gap-2 items-start mb-2">
                     <div className="user-avatar-xs" style={{ width: 24, height: 24, fontSize: '0.7rem', backgroundColor: '#f59e0b', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%' }}>T</div>
@@ -99,7 +99,7 @@ const Home: React.FC = () => {
                   <span className="badge" style={{ backgroundColor: '#fef3c7', color: '#f59e0b' }}>85 Điểm</span>
                 </div>
                 
-                <div className="peer-reviews" style={{ backgroundColor: '#f8fafc', padding: '0.75rem', borderRadius: '0.375rem', border: '1px solid #e2e8f0' }}>
+                <div className="peer-reviews" style={{ backgroundColor: 'var(--bg-color)', padding: '0.75rem', borderRadius: '0.375rem', border: '1px solid var(--border-color)' }}>
                   <h4 className="text-xs font-bold text-slate-500 mb-2 flex items-center gap-1" style={{ color: '#64748b' }}><MessageCircle size={14}/> Đánh giá từ người xem (1)</h4>
                   <div className="flex gap-2 items-start">
                     <div className="user-avatar-xs" style={{ width: 24, height: 24, fontSize: '0.7rem', backgroundColor: '#10b981', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%' }}>H</div>

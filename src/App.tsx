@@ -15,6 +15,24 @@ import CommunityWatch from './pages/CommunityWatch';
 import Settings from './pages/Settings';
 
 const App: React.FC = () => {
+  React.useEffect(() => {
+    const handleSystemThemeChange = (e: MediaQueryListEvent) => {
+      const savedTheme = localStorage.getItem('theme') || 'auto';
+      if (savedTheme === 'auto') {
+        const root = document.documentElement;
+        if (e.matches) {
+          root.classList.add('dark');
+        } else {
+          root.classList.remove('dark');
+        }
+      }
+    };
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQuery.addEventListener('change', handleSystemThemeChange);
+    return () => mediaQuery.removeEventListener('change', handleSystemThemeChange);
+  }, []);
+
   return (
     <HashRouter>
       <Routes>

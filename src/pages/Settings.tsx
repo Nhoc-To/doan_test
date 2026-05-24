@@ -4,6 +4,38 @@ import './Settings.css';
 
 const Settings: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'profile' | 'appearance' | 'language'>('profile');
+  const [theme, setTheme] = useState<'light' | 'dark' | 'auto'>(() => {
+    return (localStorage.getItem('theme') as 'light' | 'dark' | 'auto') || 'auto';
+  });
+  const [showSavedMsg, setShowSavedMsg] = useState(false);
+
+  const handleThemeChange = (selectedTheme: 'light' | 'dark' | 'auto') => {
+    setTheme(selectedTheme);
+    localStorage.setItem('theme', selectedTheme);
+    
+    const root = document.documentElement;
+    if (selectedTheme === 'dark') {
+      root.classList.add('dark');
+    } else if (selectedTheme === 'light') {
+      root.classList.remove('dark');
+    } else {
+      // auto
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      if (systemTheme === 'dark') {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+    }
+  };
+
+  const handleSave = () => {
+    setShowSavedMsg(true);
+    setTimeout(() => {
+      setShowSavedMsg(false);
+    }, 3000);
+  };
+
 
   return (
     <div className="settings-container">
@@ -74,21 +106,30 @@ const Settings: React.FC = () => {
               <p className="text-muted mt-1 mb-6">Tùy chỉnh giao diện theo sở thích của bạn.</p>
               
               <div className="theme-options">
-                <div className="theme-card active">
+                <div 
+                  className={`theme-card ${theme === 'light' ? 'active' : ''}`}
+                  onClick={() => handleThemeChange('light')}
+                >
                   <div className="theme-preview light">
                     <div className="fake-header"></div>
                     <div className="fake-body"></div>
                   </div>
                   <span>Sáng (Light)</span>
                 </div>
-                <div className="theme-card">
+                <div 
+                  className={`theme-card ${theme === 'dark' ? 'active' : ''}`}
+                  onClick={() => handleThemeChange('dark')}
+                >
                   <div className="theme-preview dark">
                     <div className="fake-header"></div>
                     <div className="fake-body"></div>
                   </div>
                   <span>Tối (Dark)</span>
                 </div>
-                <div className="theme-card">
+                <div 
+                  className={`theme-card ${theme === 'auto' ? 'active' : ''}`}
+                  onClick={() => handleThemeChange('auto')}
+                >
                   <div className="theme-preview auto">
                     <div className="fake-header"></div>
                     <div className="fake-body"></div>
@@ -115,7 +156,12 @@ const Settings: React.FC = () => {
           )}
 
           <div className="settings-footer mt-8">
-            <button className="btn-primary flex items-center gap-2">
+            {showSavedMsg && (
+              <span className="save-success-msg" style={{ color: 'var(--primary)', fontWeight: 500, marginRight: '1rem', alignSelf: 'center', animation: 'fadeIn 0.2s ease' }}>
+                ✓ Đã lưu thay đổi cài đặt thành công!
+              </span>
+            )}
+            <button className="btn-primary flex items-center gap-2" onClick={handleSave}>
               <Save size={18} /> Lưu thay đổi
             </button>
           </div>

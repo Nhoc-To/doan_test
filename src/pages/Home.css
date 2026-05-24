@@ -121,8 +121,8 @@
 
 /* Strengths & Feedback */
 .highlight-card {
-  background: linear-gradient(to bottom right, var(--surface), #fffbeb);
-  border-color: #fde68a;
+  background: linear-gradient(to bottom right, var(--surface), rgba(245, 158, 11, 0.05));
+  border-color: rgba(245, 158, 11, 0.3);
 }
 
 .strengths-list {
@@ -169,3 +169,11 @@
   font-style: italic;
   line-height: 1.4;
 }
+
+@media (max-width: 1024px) {
+  .overview-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+

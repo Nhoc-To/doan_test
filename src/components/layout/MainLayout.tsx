@@ -10,7 +10,7 @@ const MainLayout: React.FC = () => {
       <aside className="sidebar">
         <div className="sidebar-logo">
           <div className="logo-icon"></div>
-          <h2>SpeechCoach</h2>
+          <h2>TalkUP</h2>
         </div>
 
         <nav className="sidebar-nav">

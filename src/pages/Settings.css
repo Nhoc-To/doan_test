@@ -47,7 +47,7 @@
 }
 
 .settings-menu li.active {
-  background-color: #f0fdf4;
+  background-color: var(--primary-light);
   color: var(--primary);
   border-left-color: var(--primary);
 }

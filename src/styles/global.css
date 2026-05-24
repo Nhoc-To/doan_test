@@ -1,6 +1,7 @@
 :root {
   --primary: #10B981; /* Xanh lá cho điểm tốt */
   --primary-hover: #059669;
+  --primary-light: #ecfdf5; /* Highlight xanh nhạt */
   --secondary: #3B82F6; /* Xanh dương cho nút/hành động chính */
   --secondary-hover: #2563EB;
   --danger: #EF4444; /* Đỏ cho cảnh báo/lỗi */
@@ -8,6 +9,7 @@
   
   --bg-color: #F8FAFC; /* Nền ứng dụng */
   --surface: #FFFFFF; /* Nền của card, bảng */
+  --surface-hover: #F1F5F9;
   --text-main: #1E293B; /* Chữ chính */
   --text-muted: #64748B; /* Chữ phụ */
   
@@ -35,6 +37,17 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+:root.dark {
+  --bg-color: #0F172A;
+  --surface: #1E293B;
+  --surface-hover: #334155;
+  --primary-light: rgba(16, 185, 129, 0.15);
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --border-color: #334155;
+}
+
 
 * {
   box-sizing: border-box;

@@ -87,7 +87,7 @@ const SetupSession: React.FC = () => {
               <h2>Chọn loại thuyết trình</h2>
               <p className="text-muted mb-6">Xác định mục tiêu để AI đưa ra đánh giá phù hợp nhất.</p>
               
-              <div className="options-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+              <div className="options-grid">
                 <div className={`option-card ${selectedType === 'academic' ? 'selected' : ''}`} onClick={() => setSelectedType('academic')}>
                   <div className="option-icon"><MonitorPlay size={32} /></div>
                   <h3>Bảo vệ / Học thuật</h3>
