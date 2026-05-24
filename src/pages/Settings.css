@@ -200,3 +200,87 @@
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* Settings Page Responsive */
+@media (max-width: 768px) {
+  .settings-layout {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .settings-sidebar {
+    width: 100%;
+    padding: 0.25rem 0;
+  }
+  
+  .settings-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 0.35rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .settings-menu li {
+    padding: 0.6rem 0.25rem;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    white-space: normal; /* Cho phép tự động xuống hàng từ dài */
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+    border-radius: var(--radius-md);
+  }
+  
+  .settings-menu li.active {
+    border-left-color: transparent;
+    border-bottom-color: var(--primary);
+    background-color: var(--primary-light);
+  }
+  
+  .settings-content {
+    padding: 1.5rem;
+    min-height: auto;
+  }
+  
+  .theme-options {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .theme-card {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-sizing: border-box;
+  }
+  
+  .theme-card.active {
+    border-color: var(--primary);
+    background-color: var(--primary-light);
+  }
+  
+  .theme-preview {
+    width: 80px;
+    height: 50px;
+    padding: 5px;
+    gap: 5px;
+  }
+  
+  .theme-preview.light .fake-header,
+  .theme-preview.light .fake-body,
+  .theme-preview.dark .fake-header,
+  .theme-preview.dark .fake-body {
+    height: 12px;
+  }
+}
+
+
