@@ -148,12 +148,13 @@
 }
 
 .badge-level {
-  background-color: #f1f5f9;
+  background-color: var(--bg-color);
   color: var(--secondary);
   padding: 0.2rem 0.5rem;
   border-radius: var(--radius-sm);
   font-size: 0.8rem;
   font-weight: 600;
+  border: 1px solid var(--border-color);
 }
 
 .post-body p {
@@ -203,6 +204,11 @@
   border-color: #fde68a;
 }
 
+:root.dark .highlight-card {
+  background: linear-gradient(to bottom right, var(--surface), rgba(251, 191, 36, 0.05));
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
 .top-speakers-list {
   display: flex;
   flex-direction: column;
@@ -231,6 +237,10 @@
 .rank.gold { color: #d97706; }
 .rank.silver { color: #64748b; }
 .rank.bronze { color: #b45309; }
+
+:root.dark .rank.gold { color: #fbbf24; }
+:root.dark .rank.silver { color: #94a3b8; }
+:root.dark .rank.bronze { color: #f59e0b; }
 
 .speaker-item .name {
   flex: 1;

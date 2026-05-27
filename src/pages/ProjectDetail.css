@@ -93,7 +93,7 @@
 
 .session-item:hover {
   border-color: var(--primary);
-  background-color: #f0fdf4;
+  background-color: var(--primary-light);
 }
 
 .session-thumb {

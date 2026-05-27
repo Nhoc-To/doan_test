@@ -128,7 +128,7 @@
 }
 
 .form-group input:disabled {
-  background-color: #f1f5f9;
+  background-color: var(--bg-disabled);
   color: var(--text-muted);
   cursor: not-allowed;
 }

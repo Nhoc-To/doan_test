@@ -76,8 +76,16 @@
   padding: 1rem;
 }
 
+:root.dark .project-thumb-large {
+  background: linear-gradient(45deg, #1e293b, #334155);
+}
+
 .project-thumb-large.draft {
   background: linear-gradient(45deg, #f1f5f9, #e2e8f0);
+}
+
+:root.dark .project-thumb-large.draft {
+  background: linear-gradient(45deg, #0f172a, #1e293b);
 }
 
 .status-badge {
@@ -138,17 +146,7 @@
   margin-right: 2px;
 }
 
-.btn-secondary {
-  padding: 0.5rem 1rem;
-  background-color: #f1f5f9;
-  color: var(--text-main);
-  border-radius: var(--radius-md);
-  font-weight: 500;
-}
 
-.btn-secondary:hover {
-  background-color: #e2e8f0;
-}
 
 .btn-icon {
   padding: 0.5rem;

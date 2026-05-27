@@ -193,8 +193,8 @@
   align-items: center;
 }
 
-.action-icon.warning { background-color: #fef3c7; color: var(--warning); }
-.action-icon.success { background-color: #ecfdf5; color: var(--primary); }
+.action-icon.warning { background-color: var(--warning-light); color: var(--warning); }
+.action-icon.success { background-color: var(--primary-light); color: var(--primary); }
 
 .action-text {
   flex: 1;

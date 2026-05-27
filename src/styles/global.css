@@ -15,6 +15,11 @@
   
   --border-color: #E2E8F0;
   
+  --btn-secondary-bg: #f1f5f9;
+  --btn-secondary-hover: #e2e8f0;
+  --warning-light: #fef3c7;
+  --bg-disabled: #f1f5f9;
+  
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-lg: 1rem;
@@ -46,6 +51,10 @@
   --text-main: #F8FAFC;
   --text-muted: #94A3B8;
   --border-color: #334155;
+  --btn-secondary-bg: #334155;
+  --btn-secondary-hover: #475569;
+  --warning-light: rgba(245, 158, 11, 0.15);
+  --bg-disabled: #1e293b;
 }
 
 
@@ -87,6 +96,47 @@ a {
 
 input, select, textarea {
   font-family: inherit;
+  color: var(--text-main);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+/* Kiểu dáng nút dùng chung thích ứng dark/light mode */
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-full);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  padding: 0.5rem 1.25rem;
+  background-color: var(--btn-secondary-bg);
+  color: var(--text-main);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: var(--btn-secondary-hover);
 }
 
 /* Các lớp tiện ích (Utility classes) cơ bản */
