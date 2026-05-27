@@ -81,24 +81,31 @@ const Projects: React.FC = () => {
               </div>
               <div className="form-group">
                 <label>Mô tả / Chủ đề</label>
-                <textarea placeholder="Nhập mô tả ngắn gọn..." rows={3}></textarea>
+                <textarea
+                  placeholder="Nhập mô tả ngắn gọn..."
+                  rows={3}
+                  onChange={(e) => {
+                    e.target.style.height = 'auto';
+                    e.target.style.height = `${e.target.scrollHeight}px`;
+                  }}
+                ></textarea>
               </div>
               <div className="form-group mb-4">
                 <label>Quyền riêng tư</label>
-                <div style={{ display: 'flex', gap: '1.5rem', marginTop: '0.5rem' }}>
-                  <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 'normal', cursor: 'pointer' }}>
+                <div className="privacy-options">
+                  <label className="privacy-option-label">
                     <input type="radio" name="privacy" value="private" defaultChecked />
                     Riêng tư
                   </label>
-                  <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 'normal', cursor: 'pointer' }}>
+                  <label className="privacy-option-label">
                     <input type="radio" name="privacy" value="public" />
                     Công khai lên Cộng đồng
                   </label>
                 </div>
               </div>
-              <div className="modal-actions" style={{ justifyContent: 'space-between', marginTop: '1.5rem' }}>
+              <div className="modal-actions">
                 <button type="button" className="btn-text" onClick={() => setShowCreateModal(false)}>Hủy</button>
-                <div style={{ display: 'flex', gap: '1rem' }}>
+                <div className="modal-actions-right">
                   <button type="button" className="btn-secondary" onClick={() => navigate('/upload')}>
                     Tải video lên
                   </button>

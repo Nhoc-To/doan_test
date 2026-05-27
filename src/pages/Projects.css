@@ -174,6 +174,8 @@
   align-items: center;
   z-index: 50;
   backdrop-filter: blur(4px);
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .modal-content {
@@ -182,8 +184,12 @@
   padding: 2rem;
   width: 100%;
   max-width: 500px;
+  max-height: calc(100vh - 2rem);
   box-shadow: var(--shadow-lg);
   animation: modalIn 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
 @keyframes modalIn {
@@ -194,18 +200,26 @@
 .modal-content h2 {
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
+  flex-shrink: 0;
 }
 
 .create-form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 4px;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.form-group.mb-4 {
+  margin-bottom: 1rem;
 }
 
 .form-group label {
@@ -223,27 +237,89 @@
   transition: border-color 0.2s;
 }
 
+.form-group textarea {
+  resize: none;
+  overflow-y: hidden;
+  min-height: 80px;
+}
+
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
   border-color: var(--primary);
 }
 
+.privacy-options {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.privacy-option-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: normal;
+  cursor: pointer;
+}
+
 .modal-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  flex-shrink: 0;
+}
+
+.modal-actions-right {
+  display: flex;
+  gap: 1rem;
 }
 
 .btn-text {
   padding: 0.5rem 1rem;
   color: var(--text-muted);
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-text:hover {
   color: var(--text-main);
+}
+
+/* Modal Responsive */
+@media (max-width: 576px) {
+  .modal-content {
+    padding: 1.5rem;
+    max-height: calc(100vh - 1.5rem);
+  }
+
+  .privacy-options {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+  }
+
+  .modal-actions-right {
+    flex-direction: column-reverse;
+    gap: 0.75rem;
+  }
+
+  .modal-actions button,
+  .modal-actions-right button {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+  }
 }
 
 /* Projects Responsive */
