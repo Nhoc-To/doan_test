@@ -19,18 +19,49 @@ const Report: React.FC = () => {
     <div className="report-container">
       <header className="report-header">
         <div className="flex items-center gap-4">
-          <button className="btn-icon" onClick={() => navigate('/projects')}><ChevronLeft /></button>
+          <button className="btn-back-project" onClick={() => navigate('/projects')}>
+            <ChevronLeft size={18} />
+            <span>Quay lại dự án</span>
+          </button>
           <div>
             <h1>Báo cáo: Thuyết trình AI Tech 2026</h1>
             <p className="text-muted">Hoàn thành lúc 10:30 AM, Hôm nay</p>
           </div>
         </div>
         <div className="score-summary">
-          <div className="score-circle">
-            <span className="score-number">78</span>
-            <span className="score-text">/100</span>
+          <div className="score-progress-wrapper">
+            <svg className="score-svg-ring" viewBox="0 0 100 100">
+              <defs>
+                <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#10B981" />
+                  <stop offset="100%" stopColor="#059669" />
+                </linearGradient>
+                <filter id="scoreGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+              <circle className="ring-track" cx="50" cy="50" r="42" />
+              <circle 
+                className="ring-progress" 
+                cx="50" 
+                cy="50" 
+                r="42" 
+                stroke="url(#scoreGradient)" 
+                strokeDasharray="263.89" 
+                strokeDashoffset={263.89 - (263.89 * 78) / 100}
+                filter="url(#scoreGlow)"
+              />
+            </svg>
+            <div className="score-value-container">
+              <span className="score-value-number">78</span>
+              <span className="score-value-max">/100</span>
+            </div>
           </div>
-          <div className="score-label">Khá Tốt</div>
+          <div className="score-text-details">
+            <div className="score-badge-label">Khá Tốt</div>
+            <div className="score-subtitle">Điểm tổng quát</div>
+          </div>
         </div>
       </header>
 
