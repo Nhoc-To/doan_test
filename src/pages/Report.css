@@ -3,7 +3,7 @@
   flex-direction: column;
   height: 100vh;
   background-color: var(--bg-color);
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 /* Header */
@@ -132,10 +132,13 @@
 .report-content {
   display: flex;
   gap: 1.5rem;
-  padding: 2rem;
+  padding: 1.5rem 2rem;
   max-width: 1440px;
   margin: 0 auto;
   width: 100%;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .report-left {
@@ -143,6 +146,32 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  overflow-y: auto;
+  height: 100%;
+  padding-right: 0.5rem;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.report-left::-webkit-scrollbar,
+.report-right::-webkit-scrollbar {
+  width: 6px;
+}
+
+.report-left::-webkit-scrollbar-track,
+.report-right::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.report-left::-webkit-scrollbar-thumb,
+.report-right::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+.report-left::-webkit-scrollbar-thumb:hover,
+.report-right::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
 }
 
 .report-right {
@@ -150,9 +179,11 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  position: sticky;
-  top: 100px;
-  height: fit-content;
+  overflow-y: auto;
+  height: 100%;
+  padding-right: 0.5rem;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Video Section & Smart Timeline */
@@ -297,7 +328,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  height: 100%;
+  height: auto;
 }
 
 .chart-section h2 {

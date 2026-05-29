@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus, Search, MoreVertical, Calendar, Clock } from 'lucide-react';
+import { Plus, Search, MoreVertical, Calendar, Clock, FileUp, X } from 'lucide-react';
 import './Projects.css';
 
 const Projects: React.FC = () => {
   const navigate = useNavigate();
   const [showCreateModal, setShowCreateModal] = useState(false);
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setUploadedFile(e.target.files[0]);
+    }
+  };
 
   return (
     <div className="projects-container">
@@ -89,6 +96,38 @@ const Projects: React.FC = () => {
                     e.target.style.height = `${e.target.scrollHeight}px`;
                   }}
                 ></textarea>
+              </div>
+              <div className="form-group">
+                <label>Tài liệu đính kèm (Slide thuyết trình)</label>
+                <div className="file-upload-zone">
+                  <input 
+                    type="file" 
+                    id="ppt-upload" 
+                    accept=".ppt,.pptx,.pdf,.doc,.docx" 
+                    onChange={handleFileChange}
+                    style={{ display: 'none' }}
+                  />
+                  <label htmlFor="ppt-upload" className="upload-label">
+                    <FileUp size={24} className="upload-icon" />
+                    {uploadedFile ? (
+                      <div className="uploaded-file-info">
+                        <span className="file-name" title={uploadedFile.name}>{uploadedFile.name}</span>
+                        <button type="button" className="btn-remove-file" onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setUploadedFile(null);
+                        }}>
+                          <X size={14} />
+                        </button>
+                      </div>
+                    ) : (
+                      <>
+                        <span className="upload-text-main">Chọn slide hoặc kéo thả vào đây</span>
+                        <span className="upload-text-sub">Hỗ trợ: PPT, PPTX, PDF (Tối đa 50MB)</span>
+                      </>
+                    )}
+                  </label>
+                </div>
               </div>
               <div className="form-group mb-4">
                 <label>Quyền riêng tư</label>

@@ -70,23 +70,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem;
+  padding: 1.5rem 2rem;
   min-height: 0;
   overflow: hidden;
+  position: relative;
+}
+
+.camera-viewport-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 960px;
+  max-height: 100%;
 }
 
 .camera-viewport {
   position: relative;
+  width: 100%;
   aspect-ratio: 16/9;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  background-color: #1e293b;
-  border-radius: var(--radius-lg);
+  background-color: #0b0f19;
+  border-radius: var(--radius-xl);
   overflow: hidden;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .placeholder-person {
@@ -106,11 +114,13 @@
 .hud-overlay {
   position: absolute;
   padding: 0.5rem 1rem;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(15, 23, 42, 0.7);
   border-radius: var(--radius-md);
   font-size: 0.85rem;
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.08);
+  z-index: 20;
 }
 
 .pose-box {
@@ -142,7 +152,7 @@
 }
 
 .warning-toast {
-  background-color: rgba(245, 158, 11, 0.9);
+  background-color: rgba(245, 158, 11, 0.85);
   color: white;
   padding: 0.75rem 1.25rem;
   border-radius: var(--radius-md);
@@ -169,66 +179,88 @@
 
 /* Controls */
 .practice-controls {
-  padding: 1.25rem 2rem;
-  background: #0b0f19;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 10;
+  width: 100%;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease-in-out;
+  z-index: 30;
+}
+
+.practice-controls:hover {
+  background: rgba(15, 23, 42, 0.75);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: var(--shadow-lg);
 }
 
 .control-group {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
+  align-items: center;
 }
 
 .control-btn {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgba(255, 255, 255, 0.08);
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.2s ease-in-out;
 }
 
 .control-btn:hover {
-  background-color: rgba(255,255,255,0.2);
+  background-color: rgba(255, 255, 255, 0.18);
+  transform: scale(1.08);
 }
 
 .btn-record {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 2rem;
+  padding: 0.7rem 2rem;
   background-color: var(--primary);
   color: white;
   border-radius: var(--radius-full);
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
 }
 
 .btn-record:hover {
   background-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
 }
 
 .btn-stop {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 2rem;
+  padding: 0.7rem 2rem;
   background-color: var(--danger);
   color: white;
   border-radius: var(--radius-full);
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3);
 }
 
 .btn-stop:hover {
   background-color: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
 }
 
 /* Audio Waveform */
@@ -274,12 +306,32 @@
     font-size: 1.1rem;
   }
   
-  .practice-controls {
+  .camera-area {
     padding: 1rem 1.5rem;
+  }
+
+  .practice-controls {
+    padding: 0.6rem 1.25rem;
+    gap: 1rem;
+  }
+
+  .control-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .control-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .btn-record, .btn-stop {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 540px) {
   .practice-header {
     padding: 0.75rem 1rem;
     gap: 0.5rem;
@@ -290,7 +342,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 150px;
+    max-width: 140px;
   }
   
   .practice-info .badge {
@@ -305,20 +357,40 @@
   .camera-area {
     padding: 0.75rem;
   }
-  
-  .practice-controls {
-    padding: 0.75rem 1rem;
+
+  .camera-viewport-container {
     gap: 0.75rem;
   }
   
-  .control-btn {
-    width: 40px;
-    height: 40px;
+  .practice-controls {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    border-radius: var(--radius-md);
   }
-  
+
+  .control-group {
+    order: 2;
+    gap: 0.5rem;
+  }
+
+  .control-group.right {
+    order: 3;
+  }
+
+  .main-action {
+    order: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
   .btn-record, .btn-stop {
-    padding: 0.5rem 1.25rem;
-    font-size: 0.9rem;
+    width: 100%;
+    max-width: 200px;
+    justify-content: center;
+    padding: 0.55rem 1.25rem;
   }
   
   .hud-overlay {
